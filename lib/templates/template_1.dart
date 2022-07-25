@@ -105,7 +105,6 @@ class TemplateEngineering {
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 142, 280, 100));
 
-//  form
     page.graphics.drawString(
         '01.   Name Of the Student', PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
