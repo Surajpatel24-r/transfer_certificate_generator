@@ -59,9 +59,9 @@ class _MainScreenState extends State<MainScreen> {
       ),
       content: NavigationBody(index: _currentPage, children: <Widget>[
         HomePageScreen(),
-        EngineeringFormScreen(),
-        PharmacyFormScreen(),
-        CommerceFormScreen(),
+        EngineeringScreen(),
+        PharmacyScreen(),
+        CommerceScreen(),
       ]),
     );
   }
