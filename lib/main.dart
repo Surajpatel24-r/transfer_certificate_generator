@@ -5,6 +5,7 @@ import 'package:transfer_certificate_generator/templates/template_2.dart';
 import 'package:transfer_certificate_generator/templates/template_3.dart';
 
 void main() {
+  // hello test
   runApp(TransferCertificateGenerator());
 }
 
