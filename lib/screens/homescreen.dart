@@ -12,15 +12,6 @@ class HomePageScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          // GestureDetector(
-          //   onTap: () {},
-          //   child: Card(
-          //     backgroundColor: Colors.white,
-          //     child: Text("Add"),
-          //     padding: EdgeInsets.symmetric(horizontal: 100, vertical: 200),
-          //     elevation: 10.0,
-          //   ),
-          // ),
           Button(
             child: Icon(FluentIcons.add),
             onPressed: () {
