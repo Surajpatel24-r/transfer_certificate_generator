@@ -1,15 +1,13 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class PharmacyFormScreen extends StatefulWidget {
-  const PharmacyFormScreen({Key? key}) : super(key: key);
+class PharmacyScreen extends StatefulWidget {
+  const PharmacyScreen({Key? key}) : super(key: key);
 
   @override
-  State<PharmacyFormScreen> createState() => _PharmacyFormScreenState();
+  State<PharmacyScreen> createState() => _PharmacyScreenState();
 }
 
-class _PharmacyFormScreenState extends State<PharmacyFormScreen> {
+class _PharmacyScreenState extends State<PharmacyScreen> {
   @override
   Widget build(BuildContext context) {
     return Center(

@@ -1,15 +1,13 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class CommerceFormScreen extends StatefulWidget {
-  const CommerceFormScreen({Key? key}) : super(key: key);
+class CommerceScreen extends StatefulWidget {
+  const CommerceScreen({Key? key}) : super(key: key);
 
   @override
-  State<CommerceFormScreen> createState() => _CommerceFormScreenState();
+  State<CommerceScreen> createState() => _CommerceScreenState();
 }
 
-class _CommerceFormScreenState extends State<CommerceFormScreen> {
+class _CommerceScreenState extends State<CommerceScreen> {
   @override
   Widget build(BuildContext context) {
     return Center(
