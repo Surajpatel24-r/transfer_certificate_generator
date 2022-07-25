@@ -213,7 +213,7 @@ class _AllFormScreenState extends State<AllFormScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Button(
-                    child: Text("Save and Print"),
+                    child: Text("Save and Generate"),
                     onPressed: () {
                       if (_formkey.currentState!.validate()) {
                         Navigator.push(
