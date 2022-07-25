@@ -19,6 +19,6 @@ class TransferCertificateGenerator extends StatelessWidget {
         theme: ThemeData(),
         title: "Transfer Certificate Generator",
         debugShowCheckedModeBanner: false,
-        home: AppBasePage());
+        home: );
   }
 }
