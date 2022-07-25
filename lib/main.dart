@@ -1,24 +1,68 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:transfer_certificate_generator/screens/appbase.dart';
-import 'package:transfer_certificate_generator/templates/template_1.dart';
-import 'package:transfer_certificate_generator/templates/template_2.dart';
-import 'package:transfer_certificate_generator/templates/template_3.dart';
+import 'package:transfer_certificate_generator/screens/commercescreen.dart';
+import 'package:transfer_certificate_generator/screens/engineeringscreen.dart';
+import 'package:transfer_certificate_generator/screens/homescreen.dart';
+import 'package:transfer_certificate_generator/screens/pharmacyscreen.dart';
 
 void main() {
-  // hello test
-  runApp(TransferCertificateGenerator());
+  runApp(
+    const FluentApp(
+      debugShowCheckedModeBanner: false,
+      home: MainScreen(),
+    ),
+  );
 }
 
-class TransferCertificateGenerator extends StatelessWidget {
-  const TransferCertificateGenerator({Key? key}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int _currentPage = 0;
+  @override
   Widget build(BuildContext context) {
-    return FluentApp(
-        checkerboardOffscreenLayers: false,
-        theme: ThemeData(),
-        title: "Transfer Certificate Generator",
-        debugShowCheckedModeBanner: false,
-        home: AppBasePage());
+    return NavigationView(
+      appBar: NavigationAppBar(
+        title: Text(
+          'Transfer Certificate',
+          style: TextStyle(fontSize: 20),
+        ),
+        automaticallyImplyLeading: true,
+      ),
+      pane: NavigationPane(
+        selected: _currentPage,
+        onChanged: (i) => setState(() {
+          _currentPage = i;
+        }),
+        displayMode: PaneDisplayMode.auto,
+        items: <NavigationPaneItem>[
+          PaneItem(
+            icon: Icon(FluentIcons.home),
+            title: Text("Home"),
+          ),
+          PaneItem(
+            icon: Icon(FluentIcons.engineering_group),
+            title: Text("Engineering"),
+          ),
+          PaneItem(
+            icon: Icon(FluentIcons.engineering_group),
+            title: Text("Pharmacy"),
+          ),
+          PaneItem(
+            icon: Icon(FluentIcons.engineering_group),
+            title: Text("Science & Commerce"),
+          ),
+        ],
+      ),
+      content: NavigationBody(index: _currentPage, children: <Widget>[
+        HomePageScreen(),
+        EngineeringFormScreen(),
+        PharmacyFormScreen(),
+        CommerceFormScreen(),
+      ]),
+    );
   }
 }
