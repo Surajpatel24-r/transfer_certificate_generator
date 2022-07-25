@@ -32,6 +32,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   fluent_ui: ^3.12.0
   syncfusion_flutter_pdf: ^20.2.39
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
