@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class TemplateEngineering {
-  String templateName = "Engineering";
-
+  final category = "Engineer";
   String name = '';
   String fName = '';
   String mName = '';
@@ -248,6 +247,6 @@ class TemplateEngineering {
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 750, 500, 600));
 
-    File("/home/welsh/op.pdf").writeAsBytes(await pdf.save());
+    File("/home/welsh/ooop.pdf").writeAsBytes(await pdf.save());
   }
 }
