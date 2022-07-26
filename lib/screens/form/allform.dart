@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:transfer_certificate_generator/screens/engineeringscreen.dart';
+import 'package:transfer_certificate_generator/templates/template_1.dart';
 
 class AllFormScreen extends StatefulWidget {
   const AllFormScreen({Key? key}) : super(key: key);
@@ -216,12 +217,31 @@ class _AllFormScreenState extends State<AllFormScreen> {
                     child: Text("Save and Generate"),
                     onPressed: () {
                       if (_formkey.currentState!.validate()) {
-                        Navigator.push(
-                          context,
-                          FluentPageRoute(
-                            builder: (context) => EngineeringScreen(),
-                          ),
-                        );
+                        showDialog(
+                            context: context,
+                            builder: ((context) {
+                              return ContentDialog(
+                                constraints: BoxConstraints(
+                                    maxHeight: 400, maxWidth: 500),
+                                title: Text("Are you sure to generate file ?"),
+                                actions: [
+                                  Button(
+                                      child: Text("Engineering"),
+                                      onPressed: getEngineerTC),
+                                  Button(
+                                      child: Text("Pharmacy"),
+                                      onPressed: () {}),
+                                  Button(
+                                      child: Text("Science & Commerce"),
+                                      onPressed: () {}),
+                                  Button(
+                                      child: Text("Cancel"),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      }),
+                                ],
+                              );
+                            }));
                         print('form is validated');
                       } else {
                         print('form is not validated');
@@ -261,5 +281,23 @@ class _AllFormScreenState extends State<AllFormScreen> {
         ),
       ),
     );
+  }
+
+  getEngineerTC() async {
+    var pdf = await TemplateEngineering(
+      _nameController.text,
+      _fNameController.text,
+      _mNameController.text,
+      _genderController.text,
+      _dobController.text,
+      _courseAndBranchController.text,
+      _semStudentAdmittedController.text,
+      _semStudentLeaveController.text,
+      _rollNoController.text,
+      _resultController.text,
+      _reasonController.text,
+      _conductController.text,
+      _dateLeaveController.text,
+    ).createPdf();
   }
 }
