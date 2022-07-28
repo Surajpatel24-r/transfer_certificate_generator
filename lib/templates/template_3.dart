@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
@@ -71,13 +72,13 @@ class TemplateCommerce {
 
     // Email
     page.graphics.drawString(
-        'Prajai1801@gmail.com', PdfTrueTypeFont(InriaSansBold, 12),
+        'Email : info@ecebilaspur.ac.in', PdfTrueTypeFont(InriaSansBold, 12),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
-        bounds: const Rect.fromLTWH(230, 805, 500, 250));
+        bounds: const Rect.fromLTWH(220, 805, 500, 250));
 
     page.graphics.drawString('CHOUKSEY COLLEGE OF SCIENCE AND COMMERCE',
         PdfTrueTypeFont(InriaSansBold, 22),
-        brush: PdfSolidBrush(PdfColor(0, 0, 0, 255)),
+        brush: PdfSolidBrush(PdfColor(0, 5, 61)),
         bounds: const Rect.fromLTWH(95, 12, 600, 100));
 
     page.graphics.drawString(
@@ -102,7 +103,7 @@ class TemplateCommerce {
 
     page.graphics.drawString(
         'TRANSFER & CONDUCT CERTIFICATE', PdfTrueTypeFont(InriaSansBold, 16),
-        brush: PdfSolidBrush(PdfColor(0, 0, 0)),
+        brush: PdfSolidBrush(PdfColor(0, 5, 61)),
         bounds: const Rect.fromLTWH(174, 90, 280, 100));
 
     page.graphics.drawString('TC No.', PdfTrueTypeFont(InriaSans, 14),
@@ -250,12 +251,11 @@ class TemplateCommerce {
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 730, 500, 600));
 
-    page.graphics.drawString(
-        "Date : " + DateTime.now().toString(), PdfTrueTypeFont(InriaSans, 14),
+    var code = DateFormat('dd-MM-yyyy').format(DateTime.now());
+
+    page.graphics.drawString("Date : " + code, PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 750, 500, 600));
-
-    var code = DateTime.now().toString();
 
     File("$path/$file_name$code.pdf").writeAsBytes(await pdf.save());
 
