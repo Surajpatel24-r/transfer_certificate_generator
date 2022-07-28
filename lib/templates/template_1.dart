@@ -1,11 +1,15 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:open_file/open_file.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class TemplateEngineering {
   final category = "Engineer";
+  late String savePath;
+  String tcNo = '';
   String name = '';
   String fName = '';
   String mName = '';
@@ -20,6 +24,7 @@ class TemplateEngineering {
   String conduct = '';
   String dateStudentLeave = '';
   TemplateEngineering(
+      this.tcNo,
       this.name,
       this.fName,
       this.mName,
@@ -36,7 +41,7 @@ class TemplateEngineering {
     // createPdf();
   }
 
-  Future<void> createPdf() async {
+  Future<void> createPdf(String path, String file_name) async {
     final pdf = PdfDocument();
     pdf.pageSettings.size = PdfPageSize.a4;
     pdf.pageSettings.margins.top = 10;
@@ -103,6 +108,10 @@ class TemplateEngineering {
     page.graphics.drawString('TC No.', PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 142, 280, 100));
+
+    page.graphics.drawString("$tcNo", PdfTrueTypeFont(InriaSans, 14),
+        brush: PdfSolidBrush(PdfColor(255, 0, 0)),
+        bounds: const Rect.fromLTWH(90, 142, 280, 100));
 
 // Form
     page.graphics.drawString(
@@ -247,6 +256,11 @@ class TemplateEngineering {
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 750, 500, 600));
 
-    File("/home/welsh/ooop.pdf").writeAsBytes(await pdf.save());
+    var code = DateTime.now().toString();
+
+    File("$path/$file_name$code.pdf").writeAsBytes(await pdf.save());
+    Timer(Duration(seconds: 2), () {
+      OpenFile.open("$path/$file_name$code.pdf");
+    });
   }
 }

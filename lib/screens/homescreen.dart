@@ -38,8 +38,8 @@ class HomePageScreen extends StatelessWidget {
                 context: context,
                 builder: (context) {
                   return ContentDialog(
-                    title: Text('Are you sure to Import a pdf file'),
-                    content: Text('Check kar le ek baar Bosdike'),
+                    title: Text('Are you sure to Import file'),
+                    content: Text('file must be .json'),
                     actions: [
                       Button(
                           child: Text('Ok'),
@@ -65,7 +65,24 @@ class HomePageScreen extends StatelessWidget {
           ),
           Button(
             child: Text("Export"),
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return ContentDialog(
+                    title: Text('Are you sure to Export file'),
+                    content: Text('file must be .json'),
+                    actions: [
+                      Button(
+                          child: Text('Ok'),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          })
+                    ],
+                  );
+                },
+              );
+            },
             style: ButtonStyle(
               elevation: ButtonState.all(10.0),
               padding: ButtonState.all(

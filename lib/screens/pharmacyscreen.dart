@@ -1,5 +1,9 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:transfer_certificate_generator/models/student.dart';
+import 'package:transfer_certificate_generator/service/data_controller.dart';
+
+import '../service/data_store.dart';
 
 class PharmacyScreen extends StatefulWidget {
   const PharmacyScreen({Key? key}) : super(key: key);
@@ -9,35 +13,64 @@ class PharmacyScreen extends StatefulWidget {
 }
 
 class _PharmacyScreenState extends State<PharmacyScreen> {
+  final _dataStore = DataStoreService();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    var _dataController = DataController(DataStoreService());
     return NavigationView(
       content: Container(
         color: Colors.white,
         height: double.infinity,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: GestureDetector(
-                onTap: () {},
-                child: Card(
-                  elevation: 6.0,
-                  padding: EdgeInsets.all(28.0),
-                  borderRadius: BorderRadius.all(Radius.circular(6.0)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Pharmacy pdf"),
-                      Text("Issue Date"),
-                      Icon(FluentIcons.delete),
-                    ],
-                  ),
-                ),
-              ),
-            )
-          ],
+        child: FutureBuilder(
+          future: _dataController.fetchPharmacyData(),
+          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+            if (snapshot.hasData && snapshot.data.length != 0) {
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          print(snapshot.data![index].name);
+                        },
+                        child: Card(
+                          elevation: 6.0,
+                          padding: EdgeInsets.all(28.0),
+                          borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(snapshot.data![index].name),
+                              Text(snapshot.data![index].DOB),
+                              IconButton(
+                                icon: Icon(FluentIcons.delete),
+                                onPressed: () {
+                                  _dataController.delete(
+                                      snapshot.data![index].name,
+                                      snapshot.data![index].DOB);
+                                  setState(() {});
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  });
+            } else {
+              return Center(child: Text("No Data Found"));
+            }
+          },
         ),
       ),
     );
