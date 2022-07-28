@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
-
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:open_file/open_file.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
@@ -71,9 +71,9 @@ class TemplatePharmacy {
 
     // Email
     page.graphics.drawString(
-        'Prajai1801@gmail.com', PdfTrueTypeFont(InriaSansBold, 12),
+        'Email : info@ecebilaspur.ac.in', PdfTrueTypeFont(InriaSansBold, 12),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
-        bounds: const Rect.fromLTWH(230, 805, 500, 250));
+        bounds: const Rect.fromLTWH(220, 805, 500, 250));
 
     page.graphics.drawString('SCHOOL OF PHARMACY',
         PdfStandardFont(PdfFontFamily.helvetica, 26, style: PdfFontStyle.bold),
@@ -255,12 +255,11 @@ class TemplatePharmacy {
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 730, 500, 600));
 
-    page.graphics.drawString(
-        "Date : " + DateTime.now().toString(), PdfTrueTypeFont(InriaSans, 14),
+    var code = DateFormat('dd-MM-yyyy').format(DateTime.now());
+
+    page.graphics.drawString("Date : " + code, PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 750, 500, 600));
-
-    var code = DateTime.now().toString();
 
     File("$path/$file_name$code.pdf").writeAsBytes(await pdf.save());
     Timer(Duration(seconds: 2), () {
