@@ -78,7 +78,7 @@ class TemplateCommerce {
     page.graphics.drawString('CHOUKSEY COLLEGE OF SCIENCE AND COMMERCE',
         PdfTrueTypeFont(InriaSansBold, 22),
         brush: PdfSolidBrush(PdfColor(0, 0, 0, 255)),
-        bounds: const Rect.fromLTWH(100, 12, 600, 100));
+        bounds: const Rect.fromLTWH(95, 12, 600, 100));
 
     page.graphics.drawString(
         'NH-49, Masturi Road, Lalkhadan, Bilaspur Chattishgarh 495504',
