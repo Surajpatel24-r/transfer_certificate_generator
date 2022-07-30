@@ -338,6 +338,7 @@ class _AllFormScreenState extends State<AllFormScreen> {
     ).createPdf(path, _nameController.text);
 
     _dataController.adddData(Student(
+      tcNo: _tcNoController.text,
       category: "Pharmacy",
       name: _nameController.text,
       fName: _fNameController.text,
@@ -383,6 +384,7 @@ class _AllFormScreenState extends State<AllFormScreen> {
 
     _dataController.adddData(Student(
       category: "Engineer",
+      tcNo: _tcNoController.text,
       name: _nameController.text,
       fName: _fNameController.text,
       mName: _mNameController.text,
@@ -430,6 +432,7 @@ class _AllFormScreenState extends State<AllFormScreen> {
 
     _dataController.adddData(Student(
       category: "Commerce",
+      tcNo: _tcNoController.text,
       name: _nameController.text,
       fName: _fNameController.text,
       mName: _mNameController.text,

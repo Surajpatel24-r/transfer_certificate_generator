@@ -24,20 +24,21 @@ class TemplatePharmacy {
   String conduct = '';
   String dateStudentLeave = '';
   TemplatePharmacy(
-      this.tcNo,
-      this.name,
-      this.fName,
-      this.mName,
-      this.gender,
-      this.DOB,
-      this.courseAndBranch,
-      this.semStudentAdmitted,
-      this.semStudentWasLeaving,
-      this.rollNo,
-      this.result,
-      this.reason,
-      this.conduct,
-      this.dateStudentLeave) {
+    this.tcNo,
+    this.name,
+    this.fName,
+    this.mName,
+    this.gender,
+    this.DOB,
+    this.courseAndBranch,
+    this.semStudentAdmitted,
+    this.semStudentWasLeaving,
+    this.rollNo,
+    this.result,
+    this.reason,
+    this.conduct,
+    this.dateStudentLeave,
+  ) {
     // createPdf();
   }
 
