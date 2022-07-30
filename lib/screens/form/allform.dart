@@ -67,7 +67,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                         return 'TC Nnumber is required';
                     },
                     header: "TC Number: ",
-                    // placeholder: 'Enter Name of the Students',
                     decoration: BoxDecoration(
                       border: Border.all(style: BorderStyle.solid),
                       shape: BoxShape.rectangle,
@@ -80,7 +79,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                         return 'Please Enter a Name';
                     },
                     header: "Name of the Students: ",
-                    // placeholder: 'Enter Name of the Students',
                     decoration: BoxDecoration(
                       border: Border.all(style: BorderStyle.solid),
                       shape: BoxShape.rectangle,
@@ -89,7 +87,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                   TextFormBox(
                       controller: _fNameController,
                       header: "Father's Name: ",
-                      // placeholder: "Enter Father's Name",
                       decoration: BoxDecoration(
                         border: Border.all(style: BorderStyle.solid),
                         shape: BoxShape.rectangle,
@@ -101,7 +98,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                   TextFormBox(
                       controller: _mNameController,
                       header: "Mother's Name: ",
-                      // placeholder: "Enter Mother's Name",
                       decoration: BoxDecoration(
                         border: Border.all(style: BorderStyle.solid),
                         shape: BoxShape.rectangle,
@@ -113,7 +109,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                   TextFormBox(
                       controller: _genderController,
                       header: "Gender: ",
-                      // placeholder: 'Enter Gender',
                       decoration: BoxDecoration(
                         border: Border.all(style: BorderStyle.solid),
                         shape: BoxShape.rectangle,
@@ -125,7 +120,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                   TextFormBox(
                       controller: _dobController,
                       header: "Date of birth as per record: ",
-                      // placeholder: 'Enter Date of birth as per record',
                       decoration: BoxDecoration(
                         border: Border.all(style: BorderStyle.solid),
                         shape: BoxShape.rectangle,
@@ -138,8 +132,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                       controller: _courseAndBranchController,
                       header:
                           "Course and Branch to which the student was admitted: ",
-                      // placeholder:
-                      //     'Enter Course and Branch to which the student was admitted',
                       decoration: BoxDecoration(
                         border: Border.all(style: BorderStyle.solid),
                         shape: BoxShape.rectangle,
@@ -151,7 +143,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                   TextFormBox(
                       controller: _semStudentAdmittedController,
                       header: "Semester to which the student was admitted: ",
-                      // placeholder: 'Enter Semester to which the student was admitted',
                       decoration: BoxDecoration(
                         border: Border.all(style: BorderStyle.solid),
                         shape: BoxShape.rectangle,
@@ -164,8 +155,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                       controller: _semStudentLeaveController,
                       header:
                           "Semester in which the student was studying at the time of leaving: ",
-                      // placeholder:
-                      //     'Enter Semester in which the student was studying at the time of leaving',
                       decoration: BoxDecoration(
                         border: Border.all(style: BorderStyle.solid),
                         shape: BoxShape.rectangle,
@@ -177,7 +166,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                   TextFormBox(
                       controller: _rollNoController,
                       header: "University Roll No/ Enrollment No: ",
-                      // placeholder: 'Enter University Roll No/ Enrollment No',
                       decoration: BoxDecoration(
                         border: Border.all(style: BorderStyle.solid),
                         shape: BoxShape.rectangle,
@@ -189,7 +177,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                   TextFormBox(
                       controller: _resultController,
                       header: "Result: ",
-                      // placeholder: 'Enter Result',
                       decoration: BoxDecoration(
                         border: Border.all(style: BorderStyle.solid),
                         shape: BoxShape.rectangle,
@@ -202,8 +189,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                       controller: _reasonController,
                       header:
                           "Reason for which the student left the institute: ",
-                      // placeholder:
-                      //     'Enter Reason for which the student left the institute',
                       decoration: BoxDecoration(
                         border: Border.all(style: BorderStyle.solid),
                         shape: BoxShape.rectangle,
@@ -215,7 +200,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                   TextFormBox(
                       controller: _conductController,
                       header: "Conduct: ",
-                      // placeholder: 'Enter Conducs',
                       decoration: BoxDecoration(
                         border: Border.all(style: BorderStyle.solid),
                         shape: BoxShape.rectangle,
@@ -228,8 +212,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
                       controller: _dateLeaveController,
                       header:
                           "Date on which the student Actually left the institute: ",
-                      // placeholder:
-                      //     'Enter Date on which the student Actually left the institute',
                       decoration: BoxDecoration(
                         border: Border.all(style: BorderStyle.solid),
                         shape: BoxShape.rectangle,

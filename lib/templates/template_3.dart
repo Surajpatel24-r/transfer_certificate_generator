@@ -72,7 +72,7 @@ class TemplateCommerce {
 
     // Email
     page.graphics.drawString(
-        'Email : info@ecebilaspur.ac.in', PdfTrueTypeFont(InriaSansBold, 12),
+        'Email : info@cecbilaspur.ac.in', PdfTrueTypeFont(InriaSansBold, 12),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(220, 805, 500, 250));
 
