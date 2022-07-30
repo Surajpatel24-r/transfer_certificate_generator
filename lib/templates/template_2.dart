@@ -86,19 +86,19 @@ class TemplatePharmacy {
         bounds: const Rect.fromLTWH(140, 40, 600, 100));
 
     page.graphics.drawString(
-        'NH-49, Masturi Road, Lalkhadan, Bilaspur Chattishgarh 495504',
+        'NH-49, Masturi Road, Lalkhadan, Bilaspur Chattishgarh 495004',
         PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(130, 55, 600, 100));
 
     page.graphics.drawString(
-        'Affilated to Chhattishgarh Swami Vivekanand Technical University, Bhilai',
+        'Affiliated to Chhattishgarh Swami Vivekanand Technical University, Bhilai',
         PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(110, 70, 600, 100));
 
     page.graphics.drawString(
-        '(As ISO 2001-2008 Certified Insitute | Approved by AICTE)',
+        '(An ISO 2001:2008 Certified Institute | Approved by AICTE)',
         PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(135, 85, 600, 100));
@@ -119,7 +119,7 @@ class TemplatePharmacy {
         bounds: const Rect.fromLTWH(90, 142, 280, 100));
 // From
     page.graphics.drawString(
-        '01.   Name Of the Student', PdfTrueTypeFont(InriaSans, 14),
+        '01.   Name of the Student', PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 180, 280, 100));
 
@@ -154,7 +154,7 @@ class TemplatePharmacy {
         bounds: const Rect.fromLTWH(297, 252, 280, 100));
 
     page.graphics.drawString(
-        "05.  Date of birth as per recored", PdfTrueTypeFont(InriaSans, 14),
+        "05.  Date of Birth as per record", PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 276, 280, 100));
 
@@ -196,7 +196,7 @@ class TemplatePharmacy {
       bounds: const Rect.fromLTWH(297, 384, 200, 100),
     );
 
-    page.graphics.drawString("09.  University Roll No/ Enrollment No",
+    page.graphics.drawString("09.  University Roll.No./ Enrollment No",
         PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 440, 200, 100));
@@ -214,7 +214,7 @@ class TemplatePharmacy {
         bounds: const Rect.fromLTWH(297, 486, 200, 100));
 
     page.graphics.drawString(
-        "11.  Reason for which the student left the instite",
+        "11.  Reason for which the student left the institute",
         PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 526, 200, 100));
@@ -226,7 +226,7 @@ class TemplatePharmacy {
       bounds: const Rect.fromLTWH(297, 526, 200, 100),
     );
 
-    page.graphics.drawString("12.  Coduct", PdfTrueTypeFont(InriaSans, 14),
+    page.graphics.drawString("12.  Conduct", PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 580, 200, 100));
 
@@ -249,8 +249,7 @@ class TemplatePharmacy {
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(440, 690, 500, 600));
 
-    page.graphics.drawString(
-        "Note: No seperated Conducted Certificate is issued",
+    page.graphics.drawString("Note: No separate Conduct Certificate is issued",
         PdfTrueTypeFont(InriaSans, 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 730, 500, 600));
