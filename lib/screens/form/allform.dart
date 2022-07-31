@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:open_file/open_file.dart';
+import 'package:flutter/material.dart' as dateshow;
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:intl/intl.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:transfer_certificate_generator/models/student.dart';
 import 'package:transfer_certificate_generator/service/data_controller.dart';
@@ -71,6 +73,11 @@ class _AllFormScreenState extends State<AllFormScreen> {
                       border: Border.all(style: BorderStyle.solid),
                       shape: BoxShape.rectangle,
                     ),
+                    keyboardType:
+                        TextInputType.numberWithOptions(decimal: true),
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
                   ),
                   TextFormBox(
                     controller: _nameController,
@@ -118,16 +125,39 @@ class _AllFormScreenState extends State<AllFormScreen> {
                           return 'Please Enter Gender';
                       }),
                   TextFormBox(
-                      controller: _dobController,
-                      header: "Date of birth as per record: ",
-                      decoration: BoxDecoration(
-                        border: Border.all(style: BorderStyle.solid),
-                        shape: BoxShape.rectangle,
-                      ),
-                      validator: (text) {
-                        if (text == null || text.isEmpty)
-                          return 'Please Enter DOB';
-                      }),
+                    controller: _dobController,
+                    validator: (text) {
+                      if (text == null || text.isEmpty)
+                        return 'Please Enter DOB';
+                    },
+                    header: "Date of birth as per record: ",
+                    decoration: BoxDecoration(
+                      border: Border.all(style: BorderStyle.solid),
+                      shape: BoxShape.rectangle,
+                    ),
+                    readOnly: true,
+                    onTap: () async {
+                      DateTime? pickedDate = await dateshow.showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1950),
+                          //DateTime.now() - not to allow to choose before today.
+                          lastDate: DateTime(2100));
+
+                      if (pickedDate != null) {
+                        print(
+                            pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                        String formattedDate =
+                            DateFormat('dd-MM-yyyy').format(pickedDate);
+                        print(
+                            formattedDate); //formatted date output using intl package =>  2021-03-16
+                        setState(() {
+                          _dobController.text =
+                              formattedDate; //set output date to TextField value.
+                        });
+                      } else {}
+                    },
+                  ),
                   TextFormBox(
                       controller: _courseAndBranchController,
                       header:
