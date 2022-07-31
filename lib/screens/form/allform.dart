@@ -403,9 +403,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
 
     _clearText();
     showSnackbar(context, Snackbar(content: Text("Generation Completed")));
-    Timer(Duration(seconds: 6), () {
-      // OpenFile.open("$path/$fileName.pdf");
-    });
   }
 
   getCommerceTC() async {
@@ -451,9 +448,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
 
     _clearText();
     showSnackbar(context, Snackbar(content: Text("Generation Completed")));
-    Timer(Duration(seconds: 6), () {
-      // OpenFile.open("$path/$fileName.pdf");
-    });
   }
 
   void _clearText() {
