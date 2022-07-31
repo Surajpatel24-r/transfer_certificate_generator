@@ -1,16 +1,13 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:transfer_certificate_generator/models/student.dart';
 import 'package:transfer_certificate_generator/screens/commercescreen.dart';
+import 'package:transfer_certificate_generator/screens/about_screen.dart';
 import 'package:transfer_certificate_generator/screens/engineeringscreen.dart';
 import 'package:transfer_certificate_generator/screens/homescreen.dart';
 import 'package:transfer_certificate_generator/screens/pharmacyscreen.dart';
 import 'package:transfer_certificate_generator/service/data_store.dart';
 
-void main() async {
-  var a = await DataStoreService();
-  var n = a.dataList;
-  print("hey $n");
-
+void main() {
   runApp(
     const FluentApp(
       debugShowCheckedModeBanner: false,
@@ -50,16 +47,20 @@ class _MainScreenState extends State<MainScreen> {
             title: Text("Home"),
           ),
           PaneItem(
-            icon: Icon(FluentIcons.engineering_group),
+            icon: Icon(FluentIcons.page_list),
             title: Text("Engineering"),
           ),
           PaneItem(
-            icon: Icon(FluentIcons.engineering_group),
+            icon: Icon(FluentIcons.page_list),
             title: Text("Pharmacy"),
           ),
           PaneItem(
-            icon: Icon(FluentIcons.engineering_group),
+            icon: Icon(FluentIcons.page_list),
             title: Text("Science & Commerce"),
+          ),
+          PaneItem(
+            icon: Icon(FluentIcons.info12),
+            title: Text("About"),
           ),
         ],
       ),
@@ -68,6 +69,7 @@ class _MainScreenState extends State<MainScreen> {
         EngineeringScreen(),
         PharmacyScreen(),
         CommerceScreen(),
+        AboutScreen(),
       ]),
     );
   }
