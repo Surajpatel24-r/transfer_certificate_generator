@@ -1,6 +1,8 @@
-# transfer_certificate_generator
+# Transfer Certificate Generator
 
-A new Flutter project.
+This project is specially desgined for Chouksey Engineering College, Bilaspur.
+The Transfer Certicate Generator generate the tranfer cetifiacate pdf by entering student data and also generate a excel file which contains all records.
+
 
 ## Getting Started
 
