@@ -1,7 +1,7 @@
 # Transfer Certificate Generator
 
 This project is specially desgined for Chouksey Engineering College, Bilaspur.
-The Transfer Certicate Generator generate the tranfer cetifiacate pdf by entering student data and also generate a excel file which contains all records.
+The Transfer Certificate Generator generate the transfer cetifiacate pdf by entering student data and also generate a excel file which contains all records.
 
 
 ## Getting Started
