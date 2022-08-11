@@ -30,77 +30,97 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationView(
-      content: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Image.asset(
-            'assets/images/tc_logo.png',
-            height: 200,
-            width: 200,
-          ),
-          Text(
-            "Transfer Certificate Generator",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 22,
-                fontStyle: FontStyle.italic),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 2),
-            child: Text(
-              "Version 1.0.0",
+      content: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset(
+              'assets/images/tc_logo.png',
+              height: 200,
+              width: 200,
+            ),
+            Text(
+              "Transfer Certificate Generator",
               style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 12,
+                  fontSize: 22,
                   fontStyle: FontStyle.italic),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Text(
-              "Transfer Certificate Generator is designed for generator transfer certificate for Chouksey Engineering College, Bilaspur.",
+            Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: Text(
+                "Version 1.0.0",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                    fontStyle: FontStyle.italic),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Text(
-              "Website",
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Text(
+                "Transfer Certificate Generator is designed to generate transfer certificate for Chouksey Engineering College, Bilaspur.",
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 10),
-            child: TextButton(
-              child: Text("Project Github"),
-              onPressed: _githublaunchUrl,
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Text(
+                "Website",
+              ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Card(
-                elevation: 10,
-                child: Container(
-                  margin: EdgeInsets.all(10),
-                  height: 200,
-                  width: 300,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          "Project Manager",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                              fontStyle: FontStyle.italic),
+            Padding(
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              child: TextButton(
+                child: Text("Project Github"),
+                onPressed: _githublaunchUrl,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Card(
+                  elevation: 10,
+                  child: Container(
+                    margin: EdgeInsets.all(10),
+                    height: 200,
+                    width: 300,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            "Project Manager",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                                fontStyle: FontStyle.italic),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: TextButton(
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: TextButton(
+                            child: Text(
+                              "Prakhar Jaiswal",
+                              style: TextStyle(
+                                  fontSize: 12, fontStyle: FontStyle.italic),
+                            ),
+                            onPressed: _prajailaunchUrl,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            "Developer",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                                fontStyle: FontStyle.italic),
+                          ),
+                        ),
+                        TextButton(
                           child: Text(
                             "Prakhar Jaiswal",
                             style: TextStyle(
@@ -108,66 +128,48 @@ class AboutScreen extends StatelessWidget {
                           ),
                           onPressed: _prajailaunchUrl,
                         ),
-                      ),
+                        TextButton(
+                          child: Text(
+                            "Suraj Patel",
+                            style: TextStyle(
+                                fontSize: 12, fontStyle: FontStyle.italic),
+                          ),
+                          onPressed: _surajlaunchUrl,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Card(
+                  child: Container(
+                    height: 200,
+                    width: 300,
+                    child: Column(children: [
                       Padding(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: Text(
-                          "Developer",
+                          "Contributor",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 12,
+                              fontSize: 14,
                               fontStyle: FontStyle.italic),
                         ),
                       ),
-                      TextButton(
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
                         child: Text(
-                          "Prakhar Jaiswal",
+                          "Prakhar Jaiswal, Suraj Patel",
                           style: TextStyle(
                               fontSize: 12, fontStyle: FontStyle.italic),
                         ),
-                        onPressed: _prajailaunchUrl,
                       ),
-                      TextButton(
-                        child: Text(
-                          "Suraj Patel",
-                          style: TextStyle(
-                              fontSize: 12, fontStyle: FontStyle.italic),
-                        ),
-                        onPressed: _surajlaunchUrl,
-                      ),
-                    ],
+                    ]),
                   ),
                 ),
-              ),
-              Card(
-                child: Container(
-                  height: 200,
-                  width: 300,
-                  child: Column(children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text(
-                        "Contributor",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                            fontStyle: FontStyle.italic),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: Text(
-                        "Prakhar Jaiswal, Suraj Patel",
-                        style: TextStyle(
-                            fontSize: 12, fontStyle: FontStyle.italic),
-                      ),
-                    ),
-                  ]),
-                ),
-              ),
-            ],
-          )
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

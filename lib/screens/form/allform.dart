@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/material.dart' as dateshow;
 import 'package:flutter/services.dart';
+import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:transfer_certificate_generator/models/student.dart';
 import 'package:transfer_certificate_generator/service/data_controller.dart';
 import 'package:transfer_certificate_generator/service/data_store.dart';
@@ -335,7 +338,7 @@ class _AllFormScreenState extends State<AllFormScreen> {
       _reasonController.text,
       _conductController.text,
       _dateLeaveController.text,
-    ).createPdf(path, _nameController.text);
+    ).createPdf(path, fileName);
 
     _dataController.adddData(Student(
       tcNo: _tcNoController.text,
@@ -380,7 +383,7 @@ class _AllFormScreenState extends State<AllFormScreen> {
       _reasonController.text,
       _conductController.text,
       _dateLeaveController.text,
-    ).createPdf(path, _nameController.text);
+    ).createPdf(path, fileName);
 
     _dataController.adddData(Student(
       category: "Engineer",
@@ -425,7 +428,7 @@ class _AllFormScreenState extends State<AllFormScreen> {
       _reasonController.text,
       _conductController.text,
       _dateLeaveController.text,
-    ).createPdf(path, _nameController.text);
+    ).createPdf(path, fileName);
 
     _dataController.adddData(Student(
       category: "Commerce",
@@ -451,6 +454,7 @@ class _AllFormScreenState extends State<AllFormScreen> {
   }
 
   void _clearText() {
+    _tcNoController.clear();
     _nameController.clear();
     _fNameController.clear();
     _mNameController.clear();
