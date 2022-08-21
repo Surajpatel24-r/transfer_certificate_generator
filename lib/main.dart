@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:transfer_certificate_generator/models/student.dart';
+import 'package:transfer_certificate_generator/api/sheets/tc_sheets_api.dart';
 import 'package:transfer_certificate_generator/screens/commercescreen.dart';
 import 'package:transfer_certificate_generator/screens/about_screen.dart';
 import 'package:transfer_certificate_generator/screens/engineeringscreen.dart';
@@ -7,7 +8,11 @@ import 'package:transfer_certificate_generator/screens/homescreen.dart';
 import 'package:transfer_certificate_generator/screens/pharmacyscreen.dart';
 import 'package:transfer_certificate_generator/service/data_store.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await TcSheetApi.init();
+  await TcSheetApi.init2();
+  await TcSheetApi.init3();
   runApp(
     const FluentApp(
       debugShowCheckedModeBanner: false,

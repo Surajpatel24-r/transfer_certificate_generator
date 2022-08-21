@@ -1,4 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:transfer_certificate_generator/api/sheets/tc_sheets_api.dart';
+import 'package:transfer_certificate_generator/models/user.dart';
 
 import 'package:transfer_certificate_generator/screens/form/allform.dart';
 
@@ -16,7 +18,23 @@ class HomePageScreen extends StatelessWidget {
             child: Icon(FluentIcons.add),
             onPressed: () {
               Navigator.of(context).push(FluentPageRoute(
-                builder: (context) => AllFormScreen(),
+                builder: (context) => AllFormScreen(
+                  onSavedUser: (user) async {
+                    await TcSheetApi.insert(
+                      [user.toJson()],
+                    );
+                  },
+                  onSavedUser2: (user) async {
+                    await TcSheetApi.insert2(
+                      [user.toJson()],
+                    );
+                  },
+                  onSavedUser3: (user) async {
+                    await TcSheetApi.insert3(
+                      [user.toJson()],
+                    );
+                  },
+                ),
               ));
             },
             style: ButtonStyle(
@@ -98,5 +116,31 @@ class HomePageScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future insertUsers() async {
+    final users = [
+      User(
+          tc: 'tc',
+          name: 'name',
+          fName: 'fName',
+          mName: 'mNAme',
+          gender: 'gender',
+          DOB: 'DOB',
+          courseAndBranch: 'courseAndBranch',
+          semStudentAdmitted: 'semStudentAdmitted',
+          semStudentLeave: 'semStudentLeave',
+          rollNo: 'rollNo',
+          result: 'result',
+          reason: 'reason',
+          conduct: 'conduct',
+          dateleave: 'dateleave')
+    ];
+
+    final jsonUsers = users.map((user) => user.toJson()).toList();
+
+    await TcSheetApi.insert(jsonUsers);
+    await TcSheetApi.insert2(jsonUsers);
+    await TcSheetApi.insert3(jsonUsers);
   }
 }
