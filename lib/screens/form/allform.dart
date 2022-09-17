@@ -8,7 +8,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
+import 'package:transfer_certificate_generator/api/sheets/tc_sheets_api.dart';
 import 'package:transfer_certificate_generator/models/student.dart';
+import 'package:transfer_certificate_generator/models/user.dart';
 import 'package:transfer_certificate_generator/service/data_controller.dart';
 import 'package:transfer_certificate_generator/service/data_store.dart';
 import 'package:transfer_certificate_generator/templates/template_1.dart';
@@ -16,7 +18,13 @@ import 'package:transfer_certificate_generator/templates/template_2.dart';
 import 'package:transfer_certificate_generator/templates/template_3.dart';
 
 class AllFormScreen extends StatefulWidget {
-  const AllFormScreen({Key? key}) : super(key: key);
+  final ValueChanged<User> onSavedUser, onSavedUser2, onSavedUser3;
+  const AllFormScreen(
+      {Key? key,
+      required this.onSavedUser,
+      required this.onSavedUser2,
+      required this.onSavedUser3})
+      : super(key: key);
 
   @override
   State<AllFormScreen> createState() => _AllFormScreenState();
@@ -69,7 +77,7 @@ class _AllFormScreenState extends State<AllFormScreen> {
                     controller: _tcNoController,
                     validator: (text) {
                       if (text == null || text.isEmpty)
-                        return 'TC Nnumber is required';
+                        return 'TC Number is required';
                     },
                     header: "TC Number: ",
                     decoration: BoxDecoration(
@@ -242,17 +250,40 @@ class _AllFormScreenState extends State<AllFormScreen> {
                           return 'Please Enter Conduct';
                       }),
                   TextFormBox(
-                      controller: _dateLeaveController,
-                      header:
-                          "Date on which the student Actually left the institute: ",
-                      decoration: BoxDecoration(
-                        border: Border.all(style: BorderStyle.solid),
-                        shape: BoxShape.rectangle,
-                      ),
-                      validator: (text) {
-                        if (text == null || text.isEmpty)
-                          return 'Please Enter Date to left the institude';
-                      }),
+                    controller: _dateLeaveController,
+                    validator: (text) {
+                      if (text == null || text.isEmpty)
+                        return 'Please Enter Date to left the institude';
+                    },
+                    header:
+                        "Date on which the student Actually left the institute: ",
+                    decoration: BoxDecoration(
+                      border: Border.all(style: BorderStyle.solid),
+                      shape: BoxShape.rectangle,
+                    ),
+                    readOnly: true,
+                    onTap: () async {
+                      DateTime? pickedDate = await dateshow.showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1950),
+                          //DateTime.now() - not to allow to choose before today.
+                          lastDate: DateTime(2100));
+
+                      if (pickedDate != null) {
+                        print(
+                            pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                        String formattedDate =
+                            DateFormat('dd-MM-yyyy').format(pickedDate);
+                        print(
+                            formattedDate); //formatted date output using intl package =>  2021-03-16
+                        setState(() {
+                          _dateLeaveController.text =
+                              formattedDate; //set output date to TextField value.
+                        });
+                      } else {}
+                    },
+                  ),
                 ],
               ),
               Positioned(
@@ -274,14 +305,17 @@ class _AllFormScreenState extends State<AllFormScreen> {
                                 title: Text("Are you sure to generate file ?"),
                                 actions: [
                                   Button(
-                                      child: Text("Engineering"),
-                                      onPressed: getEngineerTC),
+                                    child: Text("Engineering"),
+                                    onPressed: getEngineerTC,
+                                  ),
                                   Button(
-                                      child: Text("Pharmacy"),
-                                      onPressed: getPharmacyTC),
+                                    child: Text("Pharmacy"),
+                                    onPressed: getPharmacyTC,
+                                  ),
                                   Button(
-                                      child: Text("Science & Commerce"),
-                                      onPressed: getCommerceTC),
+                                    child: Text("Science & Commerce"),
+                                    onPressed: getCommerceTC,
+                                  ),
                                   Button(
                                       child: Text("Cancel"),
                                       onPressed: () {
@@ -291,6 +325,7 @@ class _AllFormScreenState extends State<AllFormScreen> {
                               );
                             }),
                           );
+
                           print('form is validated');
                         } else {
                           print('form is not validated');
@@ -318,51 +353,6 @@ class _AllFormScreenState extends State<AllFormScreen> {
     );
   }
 
-  getPharmacyTC() async {
-    Navigator.of(context).pop();
-    Directory tempDir = await getApplicationDocumentsDirectory();
-    String path = tempDir.path;
-    String fileName = _nameController.text;
-    var pdf = await TemplatePharmacy(
-      _tcNoController.text,
-      _nameController.text,
-      _fNameController.text,
-      _mNameController.text,
-      _genderController.text,
-      _dobController.text,
-      _courseAndBranchController.text,
-      _semStudentAdmittedController.text,
-      _semStudentLeaveController.text,
-      _rollNoController.text,
-      _resultController.text,
-      _reasonController.text,
-      _conductController.text,
-      _dateLeaveController.text,
-    ).createPdf(path, fileName);
-
-    _dataController.adddData(Student(
-      tcNo: _tcNoController.text,
-      category: "Pharmacy",
-      name: _nameController.text,
-      fName: _fNameController.text,
-      mName: _mNameController.text,
-      gender: _genderController.text,
-      DOB: _dobController.text,
-      courseAndBranch: _courseAndBranchController.text,
-      semStudentAdmitted: _semStudentAdmittedController.text,
-      semStudentLeave: _semStudentLeaveController.text,
-      rollNo: _rollNoController.text,
-      result: _resultController.text,
-      reason: _reasonController.text,
-      conduct: _conductController.text,
-      dateLeave: _dateLeaveController.text,
-      date: "",
-    ));
-
-    _clearText();
-    showSnackbar(context, Snackbar(content: Text("Generation Completed")));
-  }
-
   getEngineerTC() async {
     Navigator.of(context).pop();
     Directory tempDir = await getApplicationDocumentsDirectory();
@@ -385,24 +375,107 @@ class _AllFormScreenState extends State<AllFormScreen> {
       _dateLeaveController.text,
     ).createPdf(path, fileName);
 
-    _dataController.adddData(Student(
-      category: "Engineer",
-      tcNo: _tcNoController.text,
-      name: _nameController.text,
-      fName: _fNameController.text,
-      mName: _mNameController.text,
-      gender: _genderController.text,
-      DOB: _dobController.text,
-      courseAndBranch: _courseAndBranchController.text,
-      semStudentAdmitted: _semStudentAdmittedController.text,
-      semStudentLeave: _semStudentLeaveController.text,
-      rollNo: _rollNoController.text,
-      result: _resultController.text,
-      reason: _reasonController.text,
-      conduct: _conductController.text,
-      dateLeave: _dateLeaveController.text,
-      date: "",
-    ));
+    _dataController.adddData(
+      Student(
+        category: "Engineer",
+        tcNo: _tcNoController.text,
+        name: _nameController.text,
+        fName: _fNameController.text,
+        mName: _mNameController.text,
+        gender: _genderController.text,
+        DOB: _dobController.text,
+        courseAndBranch: _courseAndBranchController.text,
+        semStudentAdmitted: _semStudentAdmittedController.text,
+        semStudentLeave: _semStudentLeaveController.text,
+        rollNo: _rollNoController.text,
+        result: _resultController.text,
+        reason: _reasonController.text,
+        conduct: _conductController.text,
+        dateLeave: _dateLeaveController.text,
+        date: "",
+      ),
+    );
+
+    final user = User(
+        tc: _tcNoController.text,
+        name: _nameController.text,
+        fName: _fNameController.text,
+        mName: _mNameController.text,
+        gender: _genderController.text,
+        DOB: _dobController.text,
+        courseAndBranch: _courseAndBranchController.text,
+        semStudentAdmitted: _semStudentAdmittedController.text,
+        semStudentLeave: _semStudentLeaveController.text,
+        rollNo: _rollNoController.text,
+        result: _resultController.text,
+        reason: _reasonController.text,
+        conduct: _conductController.text,
+        dateleave: _dateLeaveController.text);
+    widget.onSavedUser(user);
+
+    _clearText();
+    showSnackbar(context, Snackbar(content: Text("Generation Completed")));
+  }
+
+  getPharmacyTC() async {
+    Navigator.of(context).pop();
+    Directory tempDir = await getApplicationDocumentsDirectory();
+    String path = tempDir.path;
+    String fileName = _nameController.text;
+    var pdf = await TemplatePharmacy(
+      _tcNoController.text,
+      _nameController.text,
+      _fNameController.text,
+      _mNameController.text,
+      _genderController.text,
+      _dobController.text,
+      _courseAndBranchController.text,
+      _semStudentAdmittedController.text,
+      _semStudentLeaveController.text,
+      _rollNoController.text,
+      _resultController.text,
+      _reasonController.text,
+      _conductController.text,
+      _dateLeaveController.text,
+    ).createPdf(path, fileName);
+
+    _dataController.adddData(
+      Student(
+        tcNo: _tcNoController.text,
+        category: "Pharmacy",
+        name: _nameController.text,
+        fName: _fNameController.text,
+        mName: _mNameController.text,
+        gender: _genderController.text,
+        DOB: _dobController.text,
+        courseAndBranch: _courseAndBranchController.text,
+        semStudentAdmitted: _semStudentAdmittedController.text,
+        semStudentLeave: _semStudentLeaveController.text,
+        rollNo: _rollNoController.text,
+        result: _resultController.text,
+        reason: _reasonController.text,
+        conduct: _conductController.text,
+        dateLeave: _dateLeaveController.text,
+        date: "",
+      ),
+    );
+
+    final user = User(
+        tc: _tcNoController.text,
+        name: _nameController.text,
+        fName: _fNameController.text,
+        mName: _mNameController.text,
+        gender: _genderController.text,
+        DOB: _dobController.text,
+        courseAndBranch: _courseAndBranchController.text,
+        semStudentAdmitted: _semStudentAdmittedController.text,
+        semStudentLeave: _semStudentLeaveController.text,
+        rollNo: _rollNoController.text,
+        result: _resultController.text,
+        reason: _reasonController.text,
+        conduct: _conductController.text,
+        dateleave: _dateLeaveController.text);
+    widget.onSavedUser2(user);
 
     _clearText();
     showSnackbar(context, Snackbar(content: Text("Generation Completed")));
@@ -430,24 +503,43 @@ class _AllFormScreenState extends State<AllFormScreen> {
       _dateLeaveController.text,
     ).createPdf(path, fileName);
 
-    _dataController.adddData(Student(
-      category: "Commerce",
-      tcNo: _tcNoController.text,
-      name: _nameController.text,
-      fName: _fNameController.text,
-      mName: _mNameController.text,
-      gender: _genderController.text,
-      DOB: _dobController.text,
-      courseAndBranch: _courseAndBranchController.text,
-      semStudentAdmitted: _semStudentAdmittedController.text,
-      semStudentLeave: _semStudentLeaveController.text,
-      rollNo: _rollNoController.text,
-      result: _resultController.text,
-      reason: _reasonController.text,
-      conduct: _conductController.text,
-      dateLeave: _dateLeaveController.text,
-      date: "",
-    ));
+    _dataController.adddData(
+      Student(
+        category: "Commerce",
+        tcNo: _tcNoController.text,
+        name: _nameController.text,
+        fName: _fNameController.text,
+        mName: _mNameController.text,
+        gender: _genderController.text,
+        DOB: _dobController.text,
+        courseAndBranch: _courseAndBranchController.text,
+        semStudentAdmitted: _semStudentAdmittedController.text,
+        semStudentLeave: _semStudentLeaveController.text,
+        rollNo: _rollNoController.text,
+        result: _resultController.text,
+        reason: _reasonController.text,
+        conduct: _conductController.text,
+        dateLeave: _dateLeaveController.text,
+        date: "",
+      ),
+    );
+
+    final user = User(
+        tc: _tcNoController.text,
+        name: _nameController.text,
+        fName: _fNameController.text,
+        mName: _mNameController.text,
+        gender: _genderController.text,
+        DOB: _dobController.text,
+        courseAndBranch: _courseAndBranchController.text,
+        semStudentAdmitted: _semStudentAdmittedController.text,
+        semStudentLeave: _semStudentLeaveController.text,
+        rollNo: _rollNoController.text,
+        result: _resultController.text,
+        reason: _reasonController.text,
+        conduct: _conductController.text,
+        dateleave: _dateLeaveController.text);
+    widget.onSavedUser3(user);
 
     _clearText();
     showSnackbar(context, Snackbar(content: Text("Generation Completed")));
