@@ -232,7 +232,7 @@ class TemplatePharmacy {
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 440, 200, 100));
 
-    page.graphics.drawString("University Roll.No./ Enrollment No",
+    page.graphics.drawString("University Roll.No./ Enrollment No.",
         PdfTrueTypeFont(await InriaSans(), 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(54, 440, 200, 100));

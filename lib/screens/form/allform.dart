@@ -261,28 +261,28 @@ class _AllFormScreenState extends State<AllFormScreen> {
                       border: Border.all(style: BorderStyle.solid),
                       shape: BoxShape.rectangle,
                     ),
-                    readOnly: true,
-                    onTap: () async {
-                      DateTime? pickedDate = await dateshow.showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(1950),
-                          //DateTime.now() - not to allow to choose before today.
-                          lastDate: DateTime(2100));
+                    // readOnly: true,
+                    // onTap: () async {
+                    //   DateTime? pickedDate = await dateshow.showDatePicker(
+                    //       context: context,
+                    //       initialDate: DateTime.now(),
+                    //       firstDate: DateTime(1950),
+                    //       //DateTime.now() - not to allow to choose before today.
+                    //       lastDate: DateTime(2100));
 
-                      if (pickedDate != null) {
-                        print(
-                            pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-                        String formattedDate =
-                            DateFormat('dd-MM-yyyy').format(pickedDate);
-                        print(
-                            formattedDate); //formatted date output using intl package =>  2021-03-16
-                        setState(() {
-                          _dateLeaveController.text =
-                              formattedDate; //set output date to TextField value.
-                        });
-                      } else {}
-                    },
+                    //   if (pickedDate != null) {
+                    //     print(
+                    //         pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                    //     String formattedDate =
+                    //         DateFormat('dd-MM-yyyy').format(pickedDate);
+                    //     print(
+                    //         formattedDate); //formatted date output using intl package =>  2021-03-16
+                    //     setState(() {
+                    //       _dateLeaveController.text =
+                    //           formattedDate; //set output date to TextField value.
+                    //     });
+                    //   } else {}
+                    // },
                   ),
                 ],
               ),
