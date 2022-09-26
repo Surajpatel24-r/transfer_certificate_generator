@@ -173,32 +173,48 @@ class TemplateCommerce {
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(297, 276, 280, 100));
 
-    page.graphics.drawString(
-        "06.  Course and Branch to which the student was admitted",
-        PdfTrueTypeFont(await InriaSans(), 14),
+    page.graphics.drawString("06.", PdfTrueTypeFont(await InriaSans(), 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 300, 200, 100));
 
     page.graphics.drawString(
-        ':    $courseAndBranch', PdfTrueTypeFont(await InriaSans(), 14),
+        "Course and Branch to which the student was admitted",
+        PdfTrueTypeFont(await InriaSans(), 14),
+        brush: PdfSolidBrush(PdfColor(0, 0, 0)),
+        bounds: const Rect.fromLTWH(54, 300, 200, 100));
+
+    page.graphics.drawString(':', PdfTrueTypeFont(await InriaSans(), 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(297, 300, 200, 100));
 
-    page.graphics.drawString("07.  Semester to which the student was admitted",
-        PdfTrueTypeFont(await InriaSans(), 14),
+    page.graphics.drawString(
+        '$courseAndBranch', PdfTrueTypeFont(await InriaSans(), 14),
+        brush: PdfSolidBrush(PdfColor(0, 0, 0)),
+        bounds: const Rect.fromLTWH(311, 300, 200, 100));
+
+    page.graphics.drawString("07.", PdfTrueTypeFont(await InriaSans(), 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 344, 200, 100));
+
+    page.graphics.drawString("Semester to which the student was admitted",
+        PdfTrueTypeFont(await InriaSans(), 14),
+        brush: PdfSolidBrush(PdfColor(0, 0, 0)),
+        bounds: const Rect.fromLTWH(54, 344, 200, 100));
 
     page.graphics.drawString(
         ':    $semStudentAdmitted', PdfTrueTypeFont(await InriaSans(), 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(297, 344, 200, 100));
 
-    page.graphics.drawString(
-        "08.  Semester to which the student was studying at the timing of leaving",
-        PdfTrueTypeFont(await InriaSans(), 14),
+    page.graphics.drawString("08.", PdfTrueTypeFont(await InriaSans(), 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 384, 200, 100));
+
+    page.graphics.drawString(
+        "Semester to which the student was studying at the timing of leaving",
+        PdfTrueTypeFont(await InriaSans(), 14),
+        brush: PdfSolidBrush(PdfColor(0, 0, 0)),
+        bounds: const Rect.fromLTWH(54, 384, 200, 100));
 
     page.graphics.drawString(
       ':    $semStudentWasLeaving',
@@ -207,10 +223,14 @@ class TemplateCommerce {
       bounds: const Rect.fromLTWH(297, 384, 200, 100),
     );
 
-    page.graphics.drawString("09.  University Roll.No./ Enrollment No",
-        PdfTrueTypeFont(await InriaSans(), 14),
+    page.graphics.drawString("09.", PdfTrueTypeFont(await InriaSans(), 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 440, 200, 100));
+
+    page.graphics.drawString("University Roll.No./ Enrollment No",
+        PdfTrueTypeFont(await InriaSans(), 14),
+        brush: PdfSolidBrush(PdfColor(0, 0, 0)),
+        bounds: const Rect.fromLTWH(54, 440, 200, 100));
 
     page.graphics.drawString(
         ':   $rollNo', PdfTrueTypeFont(await InriaSans(), 14),
@@ -227,11 +247,14 @@ class TemplateCommerce {
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(297, 486, 200, 100));
 
-    page.graphics.drawString(
-        "11.  Reason for which the student left the institute",
-        PdfTrueTypeFont(await InriaSans(), 14),
+    page.graphics.drawString("11.", PdfTrueTypeFont(await InriaSans(), 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 526, 200, 100));
+
+    page.graphics.drawString("Reason for which the student left the institute",
+        PdfTrueTypeFont(await InriaSans(), 14),
+        brush: PdfSolidBrush(PdfColor(0, 0, 0)),
+        bounds: const Rect.fromLTWH(54, 526, 200, 100));
 
     page.graphics.drawString(
       ':   $reason',
@@ -250,11 +273,14 @@ class TemplateCommerce {
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(297, 580, 200, 100));
 
-    page.graphics.drawString(
-        "13.  Date on which the student left the institute",
-        PdfTrueTypeFont(await InriaSans(), 14),
+    page.graphics.drawString("13.", PdfTrueTypeFont(await InriaSans(), 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(30, 620, 200, 100));
+
+    page.graphics.drawString("Date on which the student left the institute",
+        PdfTrueTypeFont(await InriaSans(), 14),
+        brush: PdfSolidBrush(PdfColor(0, 0, 0)),
+        bounds: const Rect.fromLTWH(54, 620, 200, 100));
 
     page.graphics.drawString(
         ':    $dateStudentLeave', PdfTrueTypeFont(await InriaSans(), 14),
@@ -262,7 +288,7 @@ class TemplateCommerce {
         bounds: const Rect.fromLTWH(297, 620, 200, 100));
 
     page.graphics.drawString(
-        "Principal", PdfTrueTypeFont(await await InriaSansBold(), 14),
+        "Principal", PdfTrueTypeFont(await InriaSansBold(), 14),
         brush: PdfSolidBrush(PdfColor(0, 0, 0)),
         bounds: const Rect.fromLTWH(440, 690, 500, 600));
 

@@ -2,8 +2,9 @@ import 'package:transfer_certificate_generator/models/user.dart';
 import 'package:gsheets/gsheets.dart';
 
 class TcSheetApi {
-  static const _credentials = //r''' <Enter your Google Cloud Credential Account json file> ''';
-  static final _spreadsheetId = // Enter your Google Sheet file link;
+  static const _credentials =
+      ""; //r''' <Enter your Google Cloud Credential Account json file> ''';
+  static final _spreadsheetId = ""; // Enter your Google Sheet file link;
   static final _gsheets = GSheets(_credentials);
   static Worksheet? _engineeringSheet;
   static Worksheet? _pharmacySheet;
